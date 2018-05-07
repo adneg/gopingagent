@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<style>
+ body {
+margin: 0;
+
+	background: #b3b3b3 ;
+
+}
+.panel{
+width: 100%;
+height 100%;
+}
+.error {
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 10px;
+	background: white;
+	font-weight: bold;
+    border:solid 3px black;
+    margin: 2px;
+}
+
+.error  p{
+	margin: 0px;
+	font-size: 20px;
+}
+.stat {
+	text-align: center;
+	 margin-right: auto;
+	margin-left: auto;
+	margin-top: 10px;
+	background: white;
+	font-weight: bold;
+      border:solid 3px black;
+      margin: 2px;
+}
+    .stat  table{
+	text-align: left;
+margin-left: auto;
+margin-right: auto;
+    font-size: 20px;
+    }
+    .kolo {
+     float:left;
+      width: 190px;
+      height: 85px;
+
+      background: white;
+        align center;
+       text-align: center;
+       border:solid 3px black;
+       margin: 1px;
+
+
+    }
+    .kolo .hostname{
+
+    font-weight: bold;
+    font-size: 30px;
+    margin: 0px;
+
+}
+    .kolo .czas{
+	margin: 0px;
+    font-size: 15px;
+    }
+</style>
+<title>TEST PING</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+   
+</head>
+
+<body>
+    <div class="panel"></div>
+
+    <script>
+    function pobierz_dane() {
+    $.getJSON('http://{{.Rhost}}/pingStatus', function(data) {
+		var text =``
+  		for (i = 0; i < data.length; i++) {
+			
+  		var czas= `${data[i].czas_ping}`
+		var czasN= parseFloat(czas.slice(0,czas.length-2 ))
+		var res = czas.slice(czas.length - 2,czas.length)
+
+		
+  		if (`${data[i].nazwa_hosta}` == '{{.Hostname}}') {
+		text = `<div class="stat" ><h1>* ${data[i].nazwa_hosta} *</h> 
+<table>
+  <tr>
+    <td>Ostatni Pomiar:</td>
+    <td>${data[i].data_pomiaru}</td>
+  </tr>
+  <tr>
+    <td>Status Pomiaru:</td>
+    <td>${data[i].status_pomiaru}</td>
+  </tr>
+  <tr>
+    <td>Nie Osiągalny:</td>
+    <td>${data[i].status_wysyłkowy}s</td>
+  </tr>
+   <tr>
+    <td>Czas Ping:</td>
+    <td>${data[i].czas_ping}</td>
+  </tr>
+   <tr>
+    <td>Liczba Testów: </td>
+    <td>${data[i].licznik_testow}</td>
+  </tr>
+   <tr>
+    <td>Liczba Błedów:</td>
+    <td>${data[i].licznik_bledow}</td>
+  </tr>
+</table>
+		<div>
+		`
+		
+		}
+		}
+		
+		if (text.length == 0) {
+			
+			$(".panel").html(`<div class="error" ><h1>* Ping Tester jest WŁĄCZONY *</h></br> <p>NIE MA WYBRANEGO ADRESU DO WYSWIETLENIA</p><div>`)
+		} else {
+			
+		
+                $(".panel").html(text);    
+        
+  		}
+        
+
+    }).fail(
+    function() {
+    var textE =`<div class="error" ><h1>* Ping Tester jest WYŁĄCZONY *</h></br> <p>STRONA ZAŁADOWANA GDY PINGESTER BYŁ DOSTEPNY</p> <p>OBECNIE NIE MOŻNA POBRAĆ DANYCH</p<div>`
+    $(".panel").html(textE);
+	}
+	)
+  }
+    pobierz_dane()
+    setInterval(pobierz_dane, 1000 );
+    </script>
+    
+</body>
+</html>

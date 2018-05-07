@@ -1,0 +1,42 @@
+Serwer Ping.
+Narządko do ładnego minitorowania popłaczenia  na podstawie protokołu icmp i zbieraniu statystyk.
+
+pingagent i pigserwer są oddzielnymi binarkami razem z sobą działającymi
+
+
+bardzo wazne aby pingagent znajdował się w tym samym katalogu co pingserwer a nazwa pingserwera będzie tak sama jak nazwa agenta z literka S na koncu:
+pingagent
+pingagentS
+W razie gdy pingserwer nie jest uruchomiony pingagent będzie wiedział jak uruchomic ping serwer..
+
+pingagent się komunikuje z pingserwerem za pomocą portu 3333 po localhoscie.
+front z pingagentS działa na porcie 80. Ale zostalo tak zrobione ze w szablonach port i ip na którym działa serwer ping sie sam wpisuje wiec można zmienić 
+
+POLECENIA PRZYKŁADY:
+	pingagent 				-uruchamia serwer w tle
+	pingagent host 			-uruchamia serwer, jeśli nie jest uruchomiony, sprawdza hosta
+	pingagent INFO 			-pobiera informacje o sprawdzanych hostach
+	pingagent STATUS 		-sprawdza czy serwer dziala
+	pingagent STOP 			-wyłacza serwer
+	pingagent SETTIME 60	-ustala okres po którym ma się wykonać test ping. W sekundach.
+
+pobieranie danych json:
+	http://0.0.0.0:80/pingStatus
+
+wsszystkie dodane hosty:
+	http://0.0.0.0:80/ping
+
+informacje dodatkowe dla wybranego "hosta"
+	http://0.0.0.0:80/ping/:host
+
+
+kompilacja pingagentS:
+aby templaty były  w binarce a pingagentS potrzebujemy packr z ("github.com/gobuffalo/packr")
+	packr build .
+
+kompilacja pingagent:
+	go build .
+
+Logi zapisywane są w: /var/log/pingaget
+
+Jest to moja pierwsza aplikacja Go i napewno da sie lepiej ale do nauki była bardzo fajna. Było również wiele zabawy. 
