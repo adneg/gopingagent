@@ -39,4 +39,5 @@ kompilacja pingagent:
 
 Logi zapisywane są w: /var/log/pingaget
 
-Jest to moja pierwsza aplikacja Go i napewno da sie lepiej ale do nauki była bardzo fajna. Było również wiele zabawy. 
+Jest to moja pierwsza aplikacja Go napisana w 2017 i napewno da sie lepiej, ładniej ale do nauki była bardzo fajna. 
+Było również wiele zabawy. Dzięki niej zafascynowałem się językiem go.
