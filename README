@@ -1,5 +1,5 @@
 Serwer Ping.
-Narządko do ładnego minitorowania popłaczenia  na podstawie protokołu icmp i do zbierania statystyk.
+Narządko do ładnego minitorowania webowego monitorowania pingów i do zbierania statystyk.
 
 pingagent i pigserwer są oddzielnymi binarkami razem z sobą działającymi
 
