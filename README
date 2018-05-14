@@ -20,7 +20,7 @@ information on all added hosts:
 	http://0.0.0.0:80/ping
 
 statistics for the host
-	http://0.0.0.0:80/ping/:host
+	http://0.0.0.0:80/ping/hostname
 
 
 
