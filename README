@@ -9,7 +9,7 @@ Command:
 	pingagent host 			-run pingagendS in daemon if not run, and add hosta 
 	pingagent INFO 			-print information about all added hosts
 	pingagent STATUS 		-print information 
-	pingagent STOP 			-stops serwer
+	pingagent STOP 			-stops server
 	pingagent SETTIME 60	-sets the time interval between tests in seconds
 
 get json data:
