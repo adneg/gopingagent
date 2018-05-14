@@ -6,7 +6,7 @@ pingagent communicates with pingagentS via port 3333, and can run pingagentS in 
 
 Command:
 	pingagent 			-run pingagendS in daemon 
-	pingagent host 			-run pingagendS in daemon if not run, and add hosta 
+	pingagent host 			-run pingagendS in daemon if not run, and add host
 	pingagent INFO 			-print information about all added hosts
 	pingagent STATUS 		-print information 
 	pingagent STOP 			-stops server
