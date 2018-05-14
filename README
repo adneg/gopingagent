@@ -1,43 +1,34 @@
-Serwer Ping.
-Narządko do ładnego minitorowania webowego monitorowania pingów i do zbierania statystyk.
+Server ping
 
-pingagent i pigserwer są oddzielnymi binarkami razem z sobą działającymi
+This is tool to collection and monitoring ping repley for "fast ping"  (https://github.com/tatsushid/go-fastping)
+pingagent communicates with pingagentS via port 3333, and can roun pingagentS in daemon mod if are in same directory( in this case importatant is a name a binary files)
 
-
-bardzo wazne aby pingagent znajdował się w tym samym katalogu co pingserwer a nazwa pingserwera będzie tak sama jak nazwa agenta z literka S na koncu:
-pingagent
-pingagentS
-W razie gdy pingserwer nie jest uruchomiony pingagent będzie wiedział jak uruchomic ping serwer..
-
-pingagent się komunikuje z pingserwerem za pomocą portu 3333 po localhoscie.
-front z pingagentS działa na porcie 80. Ale zostalo tak zrobione ze w szablonach port i ip na którym działa serwer ping sie sam wpisuje wiec można zmienić 
 
 POLECENIA PRZYKŁADY:
-	pingagent 				-uruchamia serwer w tle
-	pingagent host 			-uruchamia serwer, jeśli nie jest uruchomiony, sprawdza hosta
-	pingagent INFO 			-pobiera informacje o sprawdzanych hostach
-	pingagent STATUS 		-sprawdza czy serwer dziala
-	pingagent STOP 			-wyłacza serwer
-	pingagent SETTIME 60	-ustala okres po którym ma się wykonać test ping. W sekundach.
+	pingagent 				-run pingagendS in daemon 
+	pingagent host 			-run pingagendS in daemon if not run, and add hosta 
+	pingagent INFO 			-print information about all added hosts
+	pingagent STATUS 		-print information 
+	pingagent STOP 			-stops serwer
+	pingagent SETTIME 60	-sets the time interval between tests in seconds
 
-pobieranie danych json:
+get json data:
 	http://0.0.0.0:80/pingStatus
 
-wsszystkie dodane hosty:
+
+information on all added hosts:
 	http://0.0.0.0:80/ping
 
-informacje dodatkowe dla wybranego "hosta"
+statistics for the host
 	http://0.0.0.0:80/ping/:host
 
 
-kompilacja pingagentS:
-aby templaty były  w binarce a pingagentS potrzebujemy packr z ("github.com/gobuffalo/packr")
+
+pingagentS compilation ("github.com/gobuffalo/packr" templates in binary file):
 	packr build .
 
-kompilacja pingagent:
+pingagent compilation:
 	go build .
 
-Logi zapisywane są w: /var/log/pingaget
 
-Jest to moja pierwsza aplikacja Go napisana w 2017 i napewno da sie lepiej, ładniej ale do nauki była bardzo fajna. 
-Było również wiele zabawy. Dzięki niej zafascynowałem się językiem go.
+Logs are saved in: /var/log/pingaget
