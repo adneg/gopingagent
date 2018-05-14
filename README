@@ -4,8 +4,8 @@ This is tool to collection and monitoring ping repley for "fast ping"  (https://
 pingagent communicates with pingagentS via port 3333, and can roun pingagentS in daemon mod if are in same directory( in this case importatant is a name a binary files)
 
 
-POLECENIA PRZYKŁADY:
-	pingagent 				-run pingagendS in daemon 
+Command:
+	pingagent 			-run pingagendS in daemon 
 	pingagent host 			-run pingagendS in daemon if not run, and add hosta 
 	pingagent INFO 			-print information about all added hosts
 	pingagent STATUS 		-print information 
