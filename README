@@ -1,7 +1,7 @@
 Server ping
 
 This is tool to collection and monitoring ping repley for "fast ping"  (https://github.com/tatsushid/go-fastping)
-pingagent communicates with pingagentS via port 3333, and can roun pingagentS in daemon mod if are in same directory( in this case importatant is a name a binary files)
+pingagent communicates with pingagentS via port 3333, and can run pingagentS in daemon mod if are in same directory( in this case important is a name a binary files)
 
 
 Command:
